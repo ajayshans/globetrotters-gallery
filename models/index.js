@@ -1,4 +1,4 @@
-const Comment = requre('./Comments');
+const Comment = require('./Comment');
 const Landmark = require('./Landmark');
 const User = require('./User')
 
@@ -22,3 +22,10 @@ User.hasMany(Comment, {
 Comment.belongsTo(User, {
     foreignKey: 'user_id'
   });
+
+
+  module.exports = {
+    User,
+    Landmark,
+    Comment
+  }
