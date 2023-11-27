@@ -1,7 +1,6 @@
 //id trip user_id location review name type optional image
 const { Model, DataTypes } = require ('sequelize');
-const bcrypt = require('bcrypt');
-const sequelize = require('..config/connection');
+const sequelize = require('../config/connection');
 const User = require('./User');
 
 class Landmark extends Model {}

@@ -4,11 +4,11 @@ const { Landmark } = require('../../models');
 
 
 // Handle GET requests to the /search route
-app.get('/search', async (req, res) => {
-    const query = req.query.query || '';
+router.get('/search', async (req, res) => {
+    const query = req.params.location || '';
 
     try {
-        const landmarkData = await Landmark.findAll({ where: { location: query}});
+        const landmarkData = await Landmark.findAll({ where: { location: query}});  
 
     res.render('searchbar', { query, landmarkData });
     } catch (err) {
@@ -17,3 +17,5 @@ app.get('/search', async (req, res) => {
 
 
 });
+
+module.exports = router;
