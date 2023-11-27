@@ -35,11 +35,11 @@ Landmark.init(
         allowNull: false,
     },
     name: {
-        type: DataTypes.String,
+        type: DataTypes.STRING,
         allowNull:false
     },
     type: {
-        type: DataTypes.String,
+        type: DataTypes.STRING,
         allowNull:false
     },
 },
