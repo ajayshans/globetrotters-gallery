@@ -1,8 +1,6 @@
 //comments id user_alias landmark_id
-
 const { Model, DataTypes } = require ('sequelize');
-const bcrypt = require('bcrypt');
-const sequelize = require('..config/connection');
+const sequelize = require('../config/connection');
 const User = require('./User');
 
 class Comment extends Model {}
@@ -14,14 +12,6 @@ Comment.init(
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
-      },
-      username: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        references: {
-            model: User,
-            key: 'id',
-        }
       },
       user_id: {
         type: DataTypes.INTEGER,
@@ -40,11 +30,11 @@ Comment.init(
         allowNull: false,
     },
     name: {
-        type: DataTypes.String,
+        type: DataTypes.STRING,
         allowNull:false
     },
     type: {
-        type: DataTypes.String,
+        type: DataTypes.STRING,
         allowNull:false
     },
 },

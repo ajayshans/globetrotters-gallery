@@ -1,0 +1,26 @@
+[
+     {
+    "trip": "Japan Trip",
+    "user_id": 1,
+    "location": "Japan",
+    "review": "Amazing place!",
+    "name": "Tokyo Tower",
+    "type": "Building"
+  },
+  {
+    "trip": "Japan Trip",
+    "user_id": 1,
+    "location": "Japan",
+    "review": "Beautiful view!",
+    "name": "Mount Fuji",
+    "type": "Mountain"
+  },
+  {
+    "trip": "France Trip",
+    "user_id": 2,
+    "location": "France",
+    "review": "Historical site!",
+    "name": "Eiffel Tower",
+    "type": "Building"
+  }
+]
