@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 DROP DATABASE IF EXISTS gtg_db;
+=======
+-- DROP DATABASE
+DROP DATABASE IF EXISTS gtg_db;
+
+>>>>>>> main
 CREATE DATABASE gtg_db;

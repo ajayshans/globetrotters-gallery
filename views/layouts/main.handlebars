@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Globetrotters Gallery! &#127759;</title>
+  <link rel="stylesheet" href="/public/css/jass.css">
+  <link rel="stylesheet" href="/public/css/style.css">
+</head>
+
+<body>
+  <div class="flex-column justify-space-around">
+    <header class="display-flex justify-space-between align-center p-2">
+      <h1>
+        <a href="/">Globetrotters Gallery! &#127759</a>
+      </h1>
+
+      <nav>
+        <!-- Links need to be updated with once handbar pages have been made -->
+        {{#if logged_in}}
+        <a href="/profile">Your Profile</a> 
+        <button class="no-button" id="logout">Logout</button>
+        {{else}}
+        <a href="/login">Login</a>
+        {{/if}}
+      </nav>
+
+    </header>
+    <main class="container container-fluid mt-5">
+      <!-- Render the sub layout -->
+      {{{ body }}}
+    </main>
+    <footer>
+      
+    </footer>
+  </div>
+
+  <!-- Render script for logged in users only *NEEDS TO BE UPDATED ONCE HANDLEBARS ARE COMPLETED*-->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
+
+</html>
