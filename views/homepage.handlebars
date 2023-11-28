@@ -1,31 +1,44 @@
 <!-- list of itinerarys
-can thumbs up 
-show thumbs up amount -->
+the destination
+the landmark
+the description
+view comments -->
 
 <!-- Loop over each object in the projects array -->
-{{#each itineraries as |itinerary| }}
-<div class="row mb-4 itinerary">
-  <div class="col-md-5">
-    <h2>
-      <!-- Name of Itinerary -->
-      <a href="/itinerary/{{itinerary.id}}">{{itinerary.name}}</a>
-    </h2>
-    <p>
-      <span for="img" aria-label="Compass">&#129517;</span>
-      <!-- Destination of Itinerary -->
-      <span class="destination">{{format_destination itinerary.destination}}</span>
-    </p>
+{{#each itineraries as |itinerary|}}
+  <div class="row mb-4 itinerary">
+    <div class="col-md-5">
+      <h2>
+        <!-- Name of Itinerary -->
+        <a href="/itinerary/{{itinerary.id}}">{{itinerary.name}}</a>
+      </h2>
       <p>
-      <span for="img" aria-label="Magnifying">&#128270;</span>
-      <!-- Landmark of Itinerary -->
-      <span class="landmark">{{format_landmark itinerary.landmark}}</span>
-    </p>
-    <p>Posted by {{itinerary.user.name}} on {{format_date itinerary.date_created}}</p>
+        <!-- Destination of Itinerary -->
+        <span for="img" aria-label="Compass">&#129517;</span>
+        <span class="destination">{{format_destination
+            itinerary.destination
+          }}</span>
+      </p>
+      <p>
+        <!-- Landmark of Itinerary -->
+        <span for="img" aria-label="Magnifying">&#128270;</span>
+        <span class="landmark">{{format_landmark itinerary.landmark}}</span>
+      </p>
+      <!-- Creator of Itinerary -->
+      <p>Posted by
+        {{itinerary.user.name}}
+        on
+        {{format_date itinerary.date_created}}</p>
+    </div>
+    <div class="col-md-7">
+      <p>
+        {{itinerary.description}}
+      </p>
+      <p>
+        <!-- Click button to reveal itinerary comments -->
+        <span class="reveal-comments" data-itinerary-id="{{itinerary.id}}">View
+          Comments</span>
+      </p>
+    </div>
   </div>
-  <div class="col-md-7">
-    <p>
-      {{itinerary.description}}
-    </p>
-  </div>
-</div>
 {{/each}}
