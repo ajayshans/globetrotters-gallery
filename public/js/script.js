@@ -1,9 +1,12 @@
 $(document).ready(function() {
     $('#searchForm').submit(function(event) {
-      event.preventDefault(); // Prevent the form from submitting
+    // Prevent the form from submitting
+      event.preventDefault();
 
-      // Get the value of the search input using jQuery
+      // Get the value of the search input
       var searchQuery = $('#searchInput').val();
 
     });
   });
+
+  module.exports = searchQuery

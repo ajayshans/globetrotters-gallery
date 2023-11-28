@@ -1,14 +1,14 @@
 const router = require('express').Router();
 const { Landmark } = require('../../models');
-
+const searchQuery = require('../../public/js/script')
 
 
 // Handle GET requests to the /search route
 router.get('/search', async (req, res) => {
-    const query = req.params.location || '';
+    
 
     try {
-        const landmarkData = await Landmark.findAll({ where: { location: query}});  
+        const landmarkData = await Landmark.findAll({ where: { location: searchQuery}});  
 
     res.render('searchbar', { query, landmarkData });
     } catch (err) {
