@@ -1,24 +1,30 @@
-<!-- Loop over each object in the itinerarys array -->
-{{#each itinerary as |itinerary| }}
-<div class="row mb-4 itinerary">
+<!-- list of itinerarys
+can thumbs up 
+show thumbs up amount -->
+
+<!-- Loop over each object in the projects array -->
+{{#each projects as |project| }}
+<div class="row mb-4 project">
   <div class="col-md-5">
     <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      {{{get_emoji}}}
-      <a href="/itinerary/{{itinerary.id}}">{{itinerary.name}}</a>
+      <!-- Name of Itinerary -->
+      <a href="/project/{{project.id}}">{{project.name}}</a>
     </h2>
-    <!-- button to Thumbs up to rate itinerary-->
     <p>
-        <button style="font-size:24px">Thumbs UP!<i class="fa fa-thumbs-up"></i></button>
-      <!-- Pass comment/review value to the helper function -->
-      <span class="comment">{{comment_value itinerary.comment_value}}</span>
-      needed!
+      <span for="img" aria-label="Compass">&#129517;</span>
+      <!-- Destination of Itinerary -->
+      <span class="destination">{{format_destination itinerary.destination}}</span>
     </p>
-    <p>Created by {{itinerary.user.name}} on {{format_date itinerary.date_created}}</p>
+      <p>
+      <span for="img" aria-label="Magnifying">&#128270;</span>
+      <!-- Landmark of Itinerary -->
+      <span class="landmark">{{format_landmark itinerary.landmark}}</span>
+    </p>
+    <p>Posted by {{itinerary.user.name}} on {{format_date itinerary.date_created}}</p>
   </div>
   <div class="col-md-7">
     <p>
-      {{project.description}}
+      {{itinerary.description}}
     </p>
   </div>
 </div>
