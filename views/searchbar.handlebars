@@ -8,18 +8,34 @@
 <body>
     <h1>Landmark Search</h1>
 
-    <form action="/search" method="GET">
-        <input type="text" name="query" placeholder="Search..." value="{{query}}">
-        <button type="submit">Search</button>
-    </form>
+    
 
-    {{#if results}}
+    {{#if landmarkData2}}
         <h2>Search Results:</h2>
         <ul>
-            {{#each results}}
-                <li>{{this.name}} - {{this.location}} - {{this.review}}</li>
-            {{/each}}
+            <div class="space-y-4">
+                <div class="flex justify-center items-center min-h-screen">
+                    <div class="space-y-4">
+                        {{#each landmarkData2}}
+                        <div class="bg-white rounded-lg p-4">
+                            <div class="flex items-start justify-between">
+                            <div>
+                                <p class="font-bold">{{this.location}}</p>
+                                <p class="text-sm">{{this.name}} - {{this.type}}</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm">{{this.review}}</p>
+                                <p class="text-xs text-gray-500">{{this.username}} - {{this.date}}</p>
+                            </div>
+                            </div>
+                            <hr class="my-2">
+                            <p class="text-sm">{{this.review}}</p>
+                        </div>
+                        {{/each}}
+                    </div>
+                    </div>
         </ul>
     {{/if}}
+    <script src="/js/script.js"></script>
 </body>
 </html>

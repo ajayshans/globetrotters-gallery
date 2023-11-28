@@ -7,6 +7,7 @@
   <title>Globetrotters Gallery! &#127759;</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="/public/css/jass.css">
+  <script src="jquery-3.7.1.min.js"></script>
   <link rel="stylesheet" href="/public/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,8 +17,8 @@
 <body class="bg-blue-900">
   <header class="page-header flex items-center bg-green-900 text-6xl w-full py-8 text-left">
     <h1 class="text-white flex-grow flex items-center">Globetrotters Gallery🌎</h1>
-    <form class="mx-auto flex items-center" action="/search" method="GET">
-      <input type="text" name="query" placeholder="Search..." value="" class="px-4 py-3 border rounded text-lg">
+    <form class="mx-auto flex items-center" action="/api/search" method="GET">
+      <input type="text" name="query" placeholder="Search..." value="{{searchQuery}}" class="px-4 py-3 border rounded text-lg">
       <button type="submit" class="ml-2 px-6 py-3 bg-blue-900 text-white rounded text-lg">Search</button>
     </form>
  
