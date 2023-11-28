@@ -1,38 +1,29 @@
-const router = require('express').Router();
-const { Project } = require('../../models');
-const withAuth = require('../../utils/auth');
+const express = require('express');
+const router = express.Router();
+const authRouter = require('./auth'); // Importing the auth.js router
 
-router.post('/', withAuth, async (req, res) => {
-  try {
-    const newProject = await Project.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
-
-    res.status(200).json(newProject);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-router.delete('/:id', withAuth, async (req, res) => {
-  try {
-    const projectData = await Project.destroy({
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
-      },
-    });
-
-    if (!projectData) {
-      res.status(404).json({ message: 'No project found with this id!' });
-      return;
+// Middleware to check if the user is authenticated
+function isAuthenticated(req, res, next) {
+    if (req.session.user) {
+        return next();
     }
+    res.redirect('/login');
+}
 
-    res.status(200).json(projectData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
+// Using the auth router for authentication related routes
+router.use(authRouter);
+
+// Example of a protected route: Dashboard
+router.get('/dashboard', isAuthenticated, (req, res) => {
+    // This route is now protected and can be accessed only by authenticated users
+    res.render('dashboard', { user: req.session.user });
 });
+
+// Home Page - Accessible to everyone
+router.get('/', (req, res) => {
+    res.render('home');
+});
+
+// Other routes can be added here
 
 module.exports = router;
