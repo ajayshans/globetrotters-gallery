@@ -4,7 +4,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 // const routes = require('./controllers');
 // const helpers = require('./utils/helpers');
-
+const User=require("./models/User")
 const sequelize = require('./config/connection');
 // const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
@@ -38,7 +38,38 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.get('/login', (req, res) => {
+  // if (req.session.user) {
+    //  return res.redirect('/dashboard'); // Redirect if already logged in
+ // }
+  res.render('login'); // Render login page using Handlebars
+});
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
 
+  try {
+      const user = await User.findOne({ where: { username } });
+      if (user && bcrypt.compareSync(password, user.password)) {
+          req.session.user = user; // Set user in session
+          res.redirect('/dashboard');
+      } else {
+          res.render('login', { error: 'Invalid credentials' });
+      }
+  } catch (error) {
+      res.status(500).send('Server error');
+  }
+});
+
+// POST logout request
+app.post('/logout', (req, res) => {
+  if (req.session.user) {
+      req.session.destroy(() => {
+          res.redirect('/login'); // Redirect to login page after logout
+      });
+  } else {
+      res.redirect('/login');
+  }
+});
 
 // app.use(routes);
 // router.get('/', async (req, res) => {
