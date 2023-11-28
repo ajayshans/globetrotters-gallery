@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h2>{{name}}</h2>
+  <h2>{{itinerary.name}}</h2>
   <p>Created by {{user.name}} on {{format_date date_created}}</p>
 
   <p>
@@ -13,7 +13,7 @@
     <span class="landmark">{{itinerary.landmark}}</span>
   </p>
   <!-- Itinerary Description -->
-  <p>{{description}}</p>
+  <p>{{itinerary.description}}</p>
 </div>
 
 <!-- Display comments for the selected itinerary -->
@@ -21,3 +21,5 @@
   <h3>Comments on this Itinerary</h3>
   <ul id="comments-list"></ul>
 </div>
+
+<!-- Post comment function -->
