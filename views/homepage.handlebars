@@ -1,9 +1,3 @@
-<!-- list of itinerarys
-the destination
-the landmark
-the description
-view comments -->
-
 <!-- Loop over each object in the projects array -->
 {{#each itineraries as |itinerary|}}
   <div class="row mb-4 itinerary">
@@ -15,14 +9,12 @@ view comments -->
       <p>
         <!-- Destination of Itinerary -->
         <span for="img" aria-label="Compass">&#129517;</span>
-        <span class="destination">{{format_destination
-            itinerary.destination
-          }}</span>
+        <span class="destination">{{itinerary.destination}}</span>
       </p>
       <p>
         <!-- Landmark of Itinerary -->
         <span for="img" aria-label="Magnifying">&#128270;</span>
-        <span class="landmark">{{format_landmark itinerary.landmark}}</span>
+        <span class="landmark">{{itinerary.landmark}}</span>
       </p>
       <!-- Creator of Itinerary -->
       <p>Posted by
@@ -32,12 +24,15 @@ view comments -->
     </div>
     <div class="col-md-7">
       <p>
+        <!-- Itinerary Description -->
         {{itinerary.description}}
       </p>
       <p>
-        <!-- Click button to reveal itinerary comments -->
-        <span class="reveal-comments" data-itinerary-id="{{itinerary.id}}">View
-          Comments</span>
+        <!-- Click button to review itinerary comments -->
+        <button
+          class="reveal-comments"
+          data-itinerary-id="{{itinerary.id}}"
+        >Review Comments</button>
       </p>
     </div>
   </div>
