@@ -11,7 +11,8 @@ User.hasMany(Landmark, {
 });
 
 Landmark.belongsTo(User, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
+     as: 'user'
   });
 
 User.hasMany(Comment, {
@@ -23,6 +24,7 @@ Comment.belongsTo(User, {
     foreignKey: 'user_id'
   });
 
+  
 
   module.exports = {
     User,
