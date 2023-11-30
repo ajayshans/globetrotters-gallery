@@ -16,25 +16,30 @@
             <div class="w-3/4 mx-auto">
                 <div class="space-y-4">
                     {{#each landmarkData2}}
-                    <div class="bg-white rounded-lg p-4">
-                        <div class="flex items-start justify-between">
-                        <div>
-                            <p class="font-bold">{{this.location}}</p>
-                            <p class="text-sm">{{this.name}} - {{this.type}}</p>
+                        <div class="bg-white rounded-lg p-4 relative">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <p class="font-bold">{{this.location}}</p>
+                                    <p class="text-sm">{{this.name}} - {{this.type}}</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs text-gray-500">{{this.user.username}}</p>
+                                </div>
+                            </div>
+                            <hr class="my-2">
+                            <p class="text-sm">{{this.review}}</p>
+                            <form action="/api/comment" method="GET" id="commentForm">
+                                <button type="submit" class="absolute bottom-2 right-2 p-2 bg-blue-900 text-white rounded-md text-xs">View Comments</button>
+                            </form>
                         </div>
-                        <div class="text-right">
-                            
-                            <p class="text-xs text-gray-500">{{this.user.username}}</p>
-                        </div>
-                        </div>
-                        <hr class="my-2">
-                        <p class="text-sm">{{this.review}}</p>
-                    </div>
                     {{/each}}
                 </div>
-                </div>
+
+                
+            </div>
         </ul>
     {{/if}}
     <script src="/js/script.js"></script>
+    
 </body>
 </html>
