@@ -1,38 +1,38 @@
 <div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{user.name}}!</h2>
+  <div class="col-auto text-white">
+    <h2>Welcome, {{user.username}}!</h2>
   </div>
 </div>
 
-<div class="row mt-4">
+<div class="row mt-4 text-white">
   <div class="col-md-6">
-    <h3>Create a New itinerary:</h3>
+    <h3 class = "font-bold">Create a New itinerary:</h3>
 
     <form class="form new-itinerary-form">
       <div class="form-group">
         {{!-- This is the "trip" in the database --}}
         <label for="itinerary-name">Itinerary name:</label>
-        <input class="form-input" type="text" id="itinerary-name" name="itinerary-name" />
+        <input class="form-input text-black" type="text" id="itinerary-name" name="itinerary-name" />
       </div>
       <div class="form-group">
         <label for="itinerary-funding">Location:</label>
-        <input class="form-input" type="text" id="itinerary-funding" name="itinerary-funding" />
+        <input class="form-input text-black" type="text" id="itinerary-funding" name="itinerary-funding" />
       </div>
       <div class="form-group">
         <label for="itinerary-desc">Review:</label>
-        <textarea class="form-input" id="itinerary-desc" name="itinerary-desc"></textarea>
+        <textarea class="form-input text-black" id="itinerary-desc" name="itinerary-desc"></textarea>
       </div>
       <div class="form-group">
         <label for="itinerary-landmark-name">Landmark Name:</label>
-        <textarea class="form-input" id="itinerary-landmark-name" name="itinerary-landmark-name"></textarea>
+        <textarea class="form-input text-black" id="itinerary-landmark-name" name="itinerary-landmark-name"></textarea>
       </div>
         <div class="form-group">
         <label for="itinerary-landmark-type">Landmark Type:</label>
-        <textarea class="form-input" id="itinerary-landmark-type" name="itinerary-landmark-type"></textarea>
+        <textarea class="form-input text-black" id="itinerary-landmark-type" name="itinerary-landmark-type"></textarea>
       </div>
         <div class="form-group">
         <label for="itinerary-date">Date:</label>
-        <textarea class="form-input" id="itinerary-date" name="itinerary-date"></textarea>
+        <textarea class="form-input text-black" id="itinerary-date" name="itinerary-date"></textarea>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>
