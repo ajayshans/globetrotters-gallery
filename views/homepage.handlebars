@@ -1,0 +1,39 @@
+<!-- Loop over each object in the projects array -->
+{{#each itineraries as |itinerary|}}
+  <div class="row mb-4 itinerary">
+    <div class="col-md-5">
+      <h2>
+        <!-- Name of Itinerary -->
+        <a href="/itinerary/{{itinerary.id}}">{{itinerary.name}}</a>
+      </h2>
+      <p>
+        <!-- Destination of Itinerary -->
+        <span for="img" aria-label="Compass">&#129517;</span>
+        <span class="destination">{{itinerary.destination}}</span>
+      </p>
+      <p>
+        <!-- Landmark of Itinerary -->
+        <span for="img" aria-label="Magnifying">&#128270;</span>
+        <span class="landmark">{{itinerary.landmark}}</span>
+      </p>
+      <!-- Creator of Itinerary -->
+      <p>Posted by
+        {{itinerary.user.username}}
+        on
+        {{format_date itinerary.date_created}}</p>
+    </div>
+    <div class="col-md-7">
+      <p>
+        <!-- Itinerary Description -->
+        {{itinerary.description}}
+      </p>
+      <p>
+        <!-- Click button to review itinerary comments -->
+        <button
+          class="reveal-comments"
+          data-itinerary-id="{{itinerary.id}}"
+        >Review Comments</button>
+      </p>
+    </div>
+  </div>
+{{/each}}

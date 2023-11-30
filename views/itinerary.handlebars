@@ -1,0 +1,25 @@
+<div class="text-center">
+  <h2>{{itinerary.name}}</h2>
+  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+
+  <p>
+    <!-- Destination of Itinerary -->
+    <span for="img" aria-label="Compass">&#129517;</span>
+    <span class="destination">{{itinerary.destination}}</span>
+  </p>
+  <p>
+    <!-- Landmark of Itinerary -->
+    <span for="img" aria-label="Magnifying">&#128270;</span>
+    <span class="landmark">{{itinerary.landmark}}</span>
+  </p>
+  <!-- Itinerary Description -->
+  <p>{{itinerary.description}}</p>
+</div>
+
+<!-- Display comments for the selected itinerary -->
+<div id="comments-section">
+  <h3>Comments on this Itinerary</h3>
+  <ul id="comments-list"></ul>
+</div>
+
+<!-- Post comment function -->
