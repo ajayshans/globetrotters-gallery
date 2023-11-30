@@ -10,16 +10,29 @@
 
     <form class="form new-itinerary-form">
       <div class="form-group">
+        {{!-- This is the "trip" in the database --}}
         <label for="itinerary-name">Itinerary name:</label>
         <input class="form-input" type="text" id="itinerary-name" name="itinerary-name" />
       </div>
       <div class="form-group">
-        <label for="itinerary-funding">needed funding ($):</label>
-        <input class="form-input" type="number" id="itinerary-funding" name="itinerary-funding" />
+        <label for="itinerary-funding">Location:</label>
+        <input class="form-input" type="text" id="itinerary-funding" name="itinerary-funding" />
       </div>
       <div class="form-group">
-        <label for="itinerary-desc">description:</label>
+        <label for="itinerary-desc">Review:</label>
         <textarea class="form-input" id="itinerary-desc" name="itinerary-desc"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="itinerary-landmark-name">Landmark Name:</label>
+        <textarea class="form-input" id="itinerary-landmark-name" name="itinerary-landmark-name"></textarea>
+      </div>
+        <div class="form-group">
+        <label for="itinerary-landmark-name">Landmark Type:</label>
+        <textarea class="form-input" id="itinerary-landmark-name" name="itinerary-landmark-name"></textarea>
+      </div>
+        <div class="form-group">
+        <label for="itinerary-date">Date:</label>
+        <textarea class="form-input" id="itinerary-date" name="itinerary-date"></textarea>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>
@@ -27,11 +40,11 @@
     </form>
   </div>
 
-  {{#if itinerararies.length}}
+  {{#if landmarks.length}}
   <div class="col-md-6 itinerary-list">
     <h3>Current itinerararies:</h3>
 
-    {{#each itinerararies as |itinerary|}}
+    {{#each landmarks as |landmark|}}
     <div class="row mb-2">
       <div class="col-md-8">
         <h4><a href="/itinerary/{{landmark.id}}">{{landmark.name}}</a></h4>
