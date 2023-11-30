@@ -4,34 +4,34 @@
     <div class="col-md-5">
       <h2>
         <!-- Name of Itinerary -->
-        <a href="/Landmark/{{landmark.id}}">{{itinerary.name}}</a>
+        <a href="/Landmark/{{landmark.id}}">{{landmark.trip}}</a>
       </h2>
       <p>
         <!-- Destination of Itinerary -->
         <span for="img" aria-label="Compass">&#129517;</span>
-        <span class="destination">{{itinerary.destination}}</span>
+        <span class="destination">{{landmark.location}}</span>
       </p>
       <p>
         <!-- Landmark of Itinerary -->
         <span for="img" aria-label="Magnifying">&#128270;</span>
-        <span class="landmark">{{itinerary.landmark}}</span>
+        <span class="landmark">{{landmark.name}}</span>
       </p>
       <!-- Creator of Itinerary -->
       <p>Posted by
-        {{itinerary.user.username}}
+        {{landmark.user_id.username}}
         on
-        {{format_date itinerary.date_created}}</p>
+        {{format_date landmark.date}}</p>
     </div>
     <div class="col-md-7">
       <p>
         <!-- Itinerary Description -->
-        {{itinerary.description}}
+        {{landmark.review}}
       </p>
       <p>
         <!-- Click button to review itinerary comments -->
         <button
           class="reveal-comments"
-          data-itinerary-id="{{itinerary.id}}"
+          data-itinerary-id="{{landmark.comment}}"
         >Review Comments</button>
       </p>
     </div>
