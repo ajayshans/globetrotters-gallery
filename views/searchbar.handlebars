@@ -32,9 +32,16 @@
                     </div>
                     {{/each}}
                 </div>
-                </div>
+
+                <button class="fixed bottom-8 right-8 p-4 bg-blue-500 text-white rounded-md" onclick="redirectToCommentsPage()">View Comments</button>
+            </div>
         </ul>
     {{/if}}
     <script src="/js/script.js"></script>
+    <script>
+        function redirectToCommentsPage() {
+            window.location.href = 'comment.handlebars';
+        }
+    </script>
 </body>
 </html>
