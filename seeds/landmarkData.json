@@ -5,7 +5,8 @@
     "location": "Japan",
     "review": "Amazing place!",
     "name": "Tokyo Tower",
-    "type": "Building"
+    "type": "Building",
+    "date": "30/11/2023"
   },
   {
     "trip": "Japan Trip",
@@ -13,7 +14,8 @@
     "location": "Japan",
     "review": "Beautiful view!",
     "name": "Mount Fuji",
-    "type": "Mountain"
+    "type": "Mountain",
+    "date": "29/11/2023"
   },
   {
     "trip": "France Trip",
@@ -21,6 +23,7 @@
     "location": "France",
     "review": "Historical site!",
     "name": "Eiffel Tower",
-    "type": "Building"
+    "type": "Building",
+    "date": "28/11/2023"
   }
 ]
