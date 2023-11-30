@@ -2,15 +2,12 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
-<<<<<<< HEAD
 // const routes = require('./controllers');
 // const helpers = require('./utils/helpers');
 const User=require("./models/User")
-=======
 const router = require('./controllers');
 const helpers = require('./utils/helpers');
 
->>>>>>> 09080164ecdaf52306d42a34ec6fe2cad734a389
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
