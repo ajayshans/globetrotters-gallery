@@ -9,13 +9,13 @@ router.get('/profile', async (req, res) => {
     // Find the logged in user based on the session ID
     // Note: findbyPk(1, needs to be changed to findbyPk(req.session.user_id, once login logic is ready
     const userData = await User.findByPk(1, {
-      attributes: { exclude: ['password'] },
+    //   attributes: { exclude: ['password'] },
       include: [{ model: Landmark }],
     });
 
     const user = userData.get({ plain: true });
     res.render('profile', {
-      user,
+      ...user,
       logged_in: true
     });
   } catch (err) {
