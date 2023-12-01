@@ -7,13 +7,13 @@ const { Landmark, User } = require('../models');
 router.get('/profile', async (req, res) => {
   try {
     // Find the logged in user based on the session ID
+    // Note: findbyPk(1, needs to be changed to findbyPk(req.session.user_id, once login logic is ready
     const userData = await User.findByPk(1, {
       attributes: { exclude: ['password'] },
       include: [{ model: Landmark }],
     });
 
     const user = userData.get({ plain: true });
-    console.log(user)
     res.render('profile', {
       user,
       logged_in: true
