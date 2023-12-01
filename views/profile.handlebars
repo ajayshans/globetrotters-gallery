@@ -6,31 +6,31 @@
 
 <div class="row mt-4 text-white flex flex-row items-start justify-around">
   <div class="col-md-6 space-y-1 w-150 flex flex-col">
-    <h3 class = "font-base text-bold mr-20 bg-green-900 px-2 py-2 rounded mb-3">Create a post for your last trip:</h3>
+    <h3 class = "font-base text-bold mr-20 bg-green-900 px-2 py-2 rounded mb-3">Create a post for your last trip ⬇️</h3>
     <form class="form new-itinerary-form flex flex-col">
       <div class="form-group flex flex-col">
         {{!-- This is the "trip" in the database --}}
-        <label for="itinerary-name">Trip name:</label>
+        <label for="itinerary-name">Trip name</label>
         <input class="form-input text-black rounded" type="text" id="itinerary-name" name="itinerary-name" />
       </div>
       <div class="form-group flex flex-col">
-        <label for="itinerary-location">Location:</label>
+        <label for="itinerary-location">Location</label>
         <input class="form-input text-black rounded" type="text" id="itinerary-location" name="itinerary-location" />
       </div>
       <div class="form-group flex flex-col">
-        <label for="itinerary-review">Review:</label>
+        <label for="itinerary-review">Review</label>
         <textarea class="form-input text-black rounded" id="itinerary-review" name="itinerary-review"></textarea>
       </div>
       <div class="form-group flex flex-col">
-        <label for="itinerary-landmark-name">Landmark Name:</label>
+        <label for="itinerary-landmark-name">Landmark Name</label>
         <textarea class="form-input text-black rounded" id="itinerary-landmark-name" name="itinerary-landmark-name"></textarea>
       </div>
         <div class="form-group flex flex-col">
-        <label for="itinerary-landmark-type">Landmark Type:</label>
+        <label for="itinerary-landmark-type">Landmark Type</label>
         <textarea class="form-input text-black rounded" id="itinerary-landmark-type" name="itinerary-landmark-type"></textarea>
       </div>
         <div class="form-group flex flex-col">
-        <label for="post-date text-bold text-lg">Date:</label>
+        <label for="post-date text-bold text-lg">Date</label>
         <textarea class="form-input text-black rounded" id="post-date" name="post-date"></textarea>
       </div>
       <div class="form-group text-bold px-2 py-2 mt-3 bg-green-900 text-white rounded text-lg hover:bg-black text-center">
@@ -39,22 +39,26 @@
     </form>
   </div>
 
+    <div class = "mr-5">
   {{#if landmarks.length}}
   <div class="col-md-6 itinerary-list">
-    <h3>Current itinerararies:</h3>
+    <h3 class = "font-base text-bold mr-20 bg-green-900 px-2 py-2 rounded mb-5">Your Reviewed Landmarks ⬇️</h3>
 
     {{#each landmarks as |landmark|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/itinerary/{{landmark.id}}">{{landmark.name}}</a></h4>
+    <div class="row mb-6">
+      <div class="col-md-8 mb-2">
+        <h4 class= "text-black text-2xl font-bold bg-white rounded text-center"><a href="/itinerary/{{landmark.id}}">{{landmark.name}}</a></h4>
       </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{landmark.id}}">DELETE</button>
+      <div class="col-md-4 flex">
+        <button class="btn btn-sm btn-danger text-sm bg-red-900 rounded px-1 py-1" data-id="{{landmark.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}
   </div>
   {{/if}}
+    </div>
+
+
 </div>
 
 <script src="./js/profile.js"></script>
