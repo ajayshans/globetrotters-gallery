@@ -1,41 +1,41 @@
-<div class="row">
+<div class="row mb-12">
   <div class="col-auto text-white">
-    <h2>Welcome, {{user.username}}!</h2>
+    <h2 class = "mt-6 ml-4">Welcome <span class = "text-lg text-bold">{{user.username}}</span>!</h2>
   </div>
 </div>
 
-<div class="row mt-4 text-white">
+<div class="row mt-4 text-white flex flex-row items-start justify-around">
   <div class="col-md-6">
     <h3 class = "font-bold">Create a New itinerary:</h3>
-
-    <form class="form new-itinerary-form">
-      <div class="form-group">
+<br>
+    <form class="form new-itinerary-form flex flex-col">
+      <div class="form-group flex flex-col">
         {{!-- This is the "trip" in the database --}}
         <label for="itinerary-name">Itinerary name:</label>
-        <input class="form-input text-black" type="text" id="itinerary-name" name="itinerary-name" />
+        <input class="form-input text-black rounded" type="text" id="itinerary-name" name="itinerary-name" />
       </div>
-      <div class="form-group">
+      <div class="form-group flex flex-col">
         <label for="itinerary-location">Location:</label>
-        <input class="form-input text-black" type="text" id="itinerary-location" name="itinerary-location" />
+        <input class="form-input text-black rounded" type="text" id="itinerary-location" name="itinerary-location" />
       </div>
-      <div class="form-group">
+      <div class="form-group flex flex-col">
         <label for="itinerary-review">Review:</label>
-        <textarea class="form-input text-black" id="itinerary-review" name="itinerary-review"></textarea>
+        <textarea class="form-input text-black rounded" id="itinerary-review" name="itinerary-review"></textarea>
       </div>
-      <div class="form-group">
+      <div class="form-group flex flex-col">
         <label for="itinerary-landmark-name">Landmark Name:</label>
-        <textarea class="form-input text-black" id="itinerary-landmark-name" name="itinerary-landmark-name"></textarea>
+        <textarea class="form-input text-black rounded" id="itinerary-landmark-name" name="itinerary-landmark-name"></textarea>
       </div>
-        <div class="form-group">
+        <div class="form-group flex flex-col">
         <label for="itinerary-landmark-type">Landmark Type:</label>
-        <textarea class="form-input text-black" id="itinerary-landmark-type" name="itinerary-landmark-type"></textarea>
+        <textarea class="form-input text-black rounded" id="itinerary-landmark-type" name="itinerary-landmark-type"></textarea>
       </div>
-        <div class="form-group">
-        <label for="post-date">Date:</label>
-        <textarea class="form-input text-black" id="post-date" name="post-date"></textarea>
+        <div class="form-group flex flex-col">
+        <label for="post-date text-bold text-lg">Date:</label>
+        <textarea class="form-input text-black rounded" id="post-date" name="post-date"></textarea>
       </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
+      <div class="form-group px-2 py-2 mt-3 bg-green-900 text-white rounded text-lg">
+        <button type="submit" class="btn btn-primary">Post Review!</button>
       </div>
     </form>
   </div>
