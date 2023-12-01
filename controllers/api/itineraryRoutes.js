@@ -5,8 +5,13 @@ const { Landmark } = require('../../models');
 router.post('/', async (req, res) => {
   try {
     const newItinerary = await Landmark.create({
-      ...req.body,
+      trip: req.body.trip,
       user_id: 1,
+      location: req.body.location,
+      review: req.body.review,
+      name: req.body.name,
+      type: req.body.type,
+      date: req.body.date
     });
 
     res.status(200).json(newItinerary);
