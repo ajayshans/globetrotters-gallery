@@ -4,14 +4,14 @@ const newFormHandler = async (event) => {
     const trip = document.querySelector('#itinerary-name').value.trim();
     const location = document.querySelector('#itinerary-location').value.trim();
     const review = document.querySelector('#itinerary-review').value.trim();
-    const landmarkName = document.querySelector('#itinerary-landmark-name').value.trim();
-    const landmarkType = document.querySelector('#itinerary-landmark-type').value.trim();
-    const postDate = document.querySelector('#post-date').value.trim();
+    const name = document.querySelector('#itinerary-landmark-name').value.trim();
+    const type = document.querySelector('#itinerary-landmark-type').value.trim();
+    const date = document.querySelector('#post-date').value.trim();
     
-    if (trip && location && review && landmarkName && landmarkType && postDate) {
+    if (trip && location && review && name && type && date) {
       const response = await fetch(`/api/itineraries`, {
         method: 'POST',
-        body: JSON.stringify({ trip, location, review, landmarkName, landmarkType, postDate }),
+        body: JSON.stringify({ trip, location, review, name, type, date }),
         headers: {
           'Content-Type': 'application/json',
         },
