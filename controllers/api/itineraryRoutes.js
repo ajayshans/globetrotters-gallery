@@ -1,12 +1,12 @@
 const router = require('express').Router();
 const { Landmark } = require('../../models');
-// const withAuth = require('../../utils/auth');
+const withAuth = require('../../utils/auth');
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newItinerary = await Landmark.create({
       trip: req.body.trip,
-      user_id: 1,
+      user_id: req.session.user_id,
       location: req.body.location,
       review: req.body.review,
       name: req.body.name,
@@ -20,13 +20,12 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const itineraryData = await Landmark.destroy({
       where: {
         id: req.params.id,
-        // user_id: req.session.user_id,
-        user_id: 1,
+        user_id: req.session.user_id
       },
     });
 
