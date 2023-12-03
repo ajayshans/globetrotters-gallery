@@ -1,38 +1,52 @@
 const router = require('express').Router();
-const { User }=require('../../models')
+const { User } = require('../../models');
 
-// router.get('/login', (req, res) => {
-  // if (req.session.user) {
-    //  return res.redirect('/dashboard'); // Redirect if already logged in
- // }
- // res.render('login'); // Render login page using Handlebars
-//});
-router.post('/login', async (req, res) => {
-  const { username, password } = req.body;
-
+router.post('/', async (req, res) => {
   try {
-      const user = await User.findOne({ where: { username } });
-      if (user && bcrypt.compareSync(password, user.password)) {
-          req.session.user = user; // Set user in session
-          res.redirect('/dashboard');
-      } else {
-          res.render('login', { error: 'Invalid credentials' });
-      }
-  } catch (error) {
-      res.status(500).send('Server error');
+    const userData = await User.create(req.body);
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+
+      res.status(200).json(userData);
+    });
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 
-// Existing login routes...
+router.post('/login', async (req, res) => {
+  try {
+    const userData = await User.findOne({ where: { email: req.body.email } });
 
-// Serve the registration page
-//router.get('/register', (req, res) => {
-    // if (req.session.user) {
-    //     return res.redirect('/dashboard'); // Optionally redirect if already logged in
-    // }
-  //  res.render('register'); // Render register page using Handlebars
-//});
+    if (!userData) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
 
+    const validPassword = await userData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      
+      res.json({ user: userData, message: 'You are now logged in!' });
+    });
+
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 // Handle the registration form submission
 router.post('/register', async (req, res) => {
     try {
@@ -67,16 +81,13 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// Existing logout route...
-
-// POST logout request
 router.post('/logout', (req, res) => {
-  if (req.session.user) {
-      req.session.destroy(() => {
-          res.redirect('/login'); // Redirect to login page after logout
-      });
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
   } else {
-      res.redirect('/login');
+    res.status(404).end();
   }
 });
 
