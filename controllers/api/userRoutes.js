@@ -1,13 +1,12 @@
 const router = require('express').Router();
-const bcrypt = require('bcryptjs');
 const { User }=require('../../models')
 
-router.get('/login', (req, res) => {
+// router.get('/login', (req, res) => {
   // if (req.session.user) {
     //  return res.redirect('/dashboard'); // Redirect if already logged in
  // }
-  res.render('login'); // Render login page using Handlebars
-});
+ // res.render('login'); // Render login page using Handlebars
+//});
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
@@ -27,12 +26,12 @@ router.post('/login', async (req, res) => {
 // Existing login routes...
 
 // Serve the registration page
-router.get('/register', (req, res) => {
+//router.get('/register', (req, res) => {
     // if (req.session.user) {
     //     return res.redirect('/dashboard'); // Optionally redirect if already logged in
     // }
-    res.render('register'); // Render register page using Handlebars
-});
+  //  res.render('register'); // Render register page using Handlebars
+//});
 
 // Handle the registration form submission
 router.post('/register', async (req, res) => {
@@ -64,7 +63,7 @@ router.post('/register', async (req, res) => {
         res.redirect('/login');
     } catch (error) {
         console.error('Registration error:', error);
-        res.render('register', { error: 'Error during registration. Please try again.' });
+        res.json('register', { error: 'Error during registration. Please try again.' });
     }
 });
 
