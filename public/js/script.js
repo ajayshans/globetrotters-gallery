@@ -1,5 +1,5 @@
 
-const { JSDOM } = require('jsdom');
+/*const { JSDOM } = require('jsdom');
 
 // Create a virtual DOM environment
 const dom = new JSDOM('<!DOCTYPE html><html><body><button id="viewCommentsButton">View Comments</button><div id="landmarkId">123</div></body></html>');
@@ -21,4 +21,4 @@ document.addEventListener('DOMContentLoaded', function () {
     module.exports = {
         landmarkId: landmarkId,
     };
-});
+});*/

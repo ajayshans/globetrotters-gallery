@@ -1,16 +1,16 @@
 const router = require('express').Router();
 const { Landmark, User, Comment } = require('../../models');
 const script = require('../../public/js/script');
-console.log(script.landmarkId)
+
 router.get('/', async (req, res) => {
-    
+    script.landmarkId = 1
 
     try {
         
 
         
         const [landmarkData, commentData] = await Promise.all([
-            Landmark.findOne({
+            Landmark.findAll({
                 where: { id: script.landmarkId },
                 include: [
                     {
@@ -42,5 +42,31 @@ router.get('/', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+router.post('/api/comment', async (req, res) => {
+    try {
+      const { commentText } = req.body;
+  
+  
+      const userId = req.user.id;
+  
+     
+      const landmarkId = req.body.landmarkId; 
+  
+      
+      const newComment = await Comment.create({
+        userId,
+        landmarkId,
+        review: commentText,
+      });
+  
+     
+      
+      res.json({ success: true, message: 'Comment submitted successfully!' });
+    } catch (error) {
+      console.error('Error submitting comment:', error);
+      res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+  });
 
 module.exports = router;
