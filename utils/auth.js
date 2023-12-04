@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 // auth.js
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const router = express.Router();
-const { User } = require('../models'); // Assuming User model is defined with Sequelize
+const { User } = require('../models'); 
 
 // GET login page
 router.get('/login', (req, res) => {
@@ -42,7 +41,7 @@ router.post('/logout', (req, res) => {
 });
 
 module.exports = router;
-=======
+
 const withAuth = (req, res, next) => {
     // If the user is not logged in, redirect the request to the login route
     if (!req.session.logged_in) {
@@ -54,4 +53,4 @@ const withAuth = (req, res, next) => {
   
   module.exports = withAuth;
   
->>>>>>> 5cb9e836a542cc2c761d9d0dc723fa4a5fede23c
+

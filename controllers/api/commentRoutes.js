@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { Landmark, User, Comment } = require('../../models');
 const script = require('../../public/js/script');
 
+
+
 router.get('/', async (req, res) => {
     script.landmarkId = 1
 
@@ -31,6 +33,7 @@ router.get('/', async (req, res) => {
                 ]
             })
         ]);
+        
 
         const landmarkData2 = landmarkData.map((landmark) => landmark.get({ plain: true }));
         const commentData2 = commentData.map((comment) => comment.get({ plain: true }));
@@ -43,30 +46,53 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/api/comment', async (req, res) => {
-    const commentPost = req.query.query
+router.post('/', async (req, res) => {
     try {
-        const { commentText } = commentPost
+        const user = req.user;
+        const landmarkID = 1; // to be changed when script works
 
-        const user = req.user
-
-        const landmarkID = 1 //to be changed when script works
-
+        // Create a new comment
         const newComment = await Comment.create({
-            user_username: user.username,
-            lankmark_id: landmarkID,
-            review: commentText,
+            user_username: "mitchm",
+            landmark_id: landmarkID,
+            review: "test",
         });
-        
-  
-        const updatedComments = await Comment.findAll({ where: { landmarkId } });
-        res.json({ success: true, comments: updatedComments });
-      
-      
-    } catch (error) {
-      console.error('Error submitting comment:', error);
-      res.status(500).json({ success: false, message: 'Internal server error' });
-    }
-  });
 
-module.exports = router;``
+        
+
+        const [landmarkData, commentData] = await Promise.all([
+            Landmark.findAll({
+                where: { id: landmarkID },
+                include: [
+                    {
+                        model: User,
+                        as: 'user',
+                        attributes: ['id', 'username']
+                    }
+                ]
+            }),
+            Comment.findAll({
+                where: { landmark_id: landmarkID },
+                include: [
+                    {
+                        model: User,
+                        as: 'user',
+                        attributes: ['id', 'username']
+                    }
+                ]
+            })
+        ]);
+
+  
+
+        const landmarkData2 = landmarkData.map((landmark) => landmark.get({ plain: true }));
+        const commentData2 = commentData.map((comment) => comment.get({ plain: true }));
+        
+        res.render('comment', { commentData2, landmarkData2 });
+    } catch (error) {
+        console.error('Error submitting comment:', error);
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+});
+
+module.exports = router;
