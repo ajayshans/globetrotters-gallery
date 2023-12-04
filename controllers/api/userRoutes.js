@@ -47,6 +47,39 @@ router.post('/login', async (req, res) => {
     res.status(400).json(err);
   }
 });
+// Handle the registration form submission
+router.post('/register', async (req, res) => {
+    try {
+        const { username, email, password, 'confirm-password': confirmPassword } = req.body;
+
+        // Check if the user already exists
+        const userExists = await User.findOne({ where: { email } });
+        if (userExists) {
+            return res.render('register', { error: 'Email already in use' });
+        }
+
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            return res.render('register', { error: 'Passwords do not match' });
+        }
+
+        // Hash the password
+        const hashedPassword = bcrypt.hashSync(password, 10);
+
+        // Create a new user
+        const newUser = await User.create({
+            username,
+            email,
+            password: hashedPassword
+        });
+
+        // Redirect to login page or set user session directly
+        res.redirect('/login');
+    } catch (error) {
+        console.error('Registration error:', error);
+        res.json('register', { error: 'Error during registration. Please try again.' });
+    }
+});
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
