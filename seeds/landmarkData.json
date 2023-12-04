@@ -2,8 +2,8 @@
      {
     "trip": "Japan Trip",
     "user_id": 1,
-    "location": "Japan",
-    "review": "Amazing place!",
+    "location": "Tokyo",
+    "review": "Sunset from the Tokyo Tower was truly a memorable experience. A visit to the Tokyo Tower, no matter which platform, is something I really recommend!",
     "name": "Tokyo Tower",
     "type": "Building",
     "date": "30/11/2023"
@@ -11,10 +11,10 @@
   {
     "trip": "Japan Trip",
     "user_id": 1,
-    "location": "Japan",
-    "review": "Beautiful view!",
-    "name": "Mount Fuji",
-    "type": "Mountain",
+    "location": "Tokyo",
+    "review": "We’re glad we did it, but it was sadly underwhelming. An expensive day out. We had good weather so got to station 5 which is closest to Mount Fuji.",
+    "name": "Mount Fuji Tour",
+    "type": "Tour",
     "date": "29/11/2023"
   },
   {

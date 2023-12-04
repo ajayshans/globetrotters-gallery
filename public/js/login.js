@@ -15,9 +15,38 @@ const loginFormHandler = async (event) => {
   
       if (response.ok) {
         // If successful, redirect the browser to the profile page
+        Toastify({
+          text: "This is a toast",
+          duration: 3000,
+          
+          newWindow: true,
+          close: true,
+          gravity: "top", // `top` or `bottom`
+          position: "left", // `left`, `center` or `right`
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+          style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+          },
+           
+        }).showToast();
+        
         document.location.replace('/profile');
+        
       } else {
-        alert(response.statusText);
+        Toastify({
+          text: "Wrong Email or Password!",
+          duration: 3000,
+          
+          newWindow: true,
+          close: true,
+          gravity: "top", // `top` or `bottom`
+          position: "left", // `left`, `center` or `right`
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+          style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+          },
+           
+        }).showToast();
       }
     }
   };
@@ -37,7 +66,25 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
+        Toastify({
+          
+        }).init();
+        Toastify({
+          text: "sign up successful",
+          duration: 3000,
+          
+          newWindow: true,
+          close: true,
+          gravity: "top", // `top` or `bottom`
+          position: "center", // `left`, `center` or `right`
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+          style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+          },
+         
+        }).showToast();
         document.location.replace('/profile');
+        
       } else {
         alert(response.statusText);
       }
@@ -51,4 +98,5 @@ const loginFormHandler = async (event) => {
   document
     .querySelector('.signup-form')
     .addEventListener('submit', signupFormHandler);
+    
   

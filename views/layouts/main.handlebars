@@ -6,24 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Globetrotters Gallery! &#127759;</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <link rel="stylesheet" type="css" href="public/css/jass.css">
-  <link rel="stylesheet" type="css" href="public/css/style.css">
+ 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Dela+Gothic+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Overpass:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
 
 <body class="bg-blue-900">
   <header class="page-header flex items-center bg-green-900 text-6xl w-full py-8 text-left">
-    
-    <a href="/" class="text-white flex-grow flex items-center m-2">Globetrotters Gallery 🌎</a>
+    <a href="/" class="flex-grow flex items-center m-2">
+      <span class="heading text-white">Globetrotters Gallery</span>
+      <img src="/img/logo-transparent-png.png" alt="Logo" class="ml-2 h-8" style="height: 2em;">
+    </a>
 
-    <form class="mx-auto flex items-center" action="/api/search" method="GET">
+    <form class="mx-auto flex items-center" action="/search" method="GET">
       <input type="text" name="query" placeholder="Search..." value="" class="px-4 py-3 border rounded text-lg">
       <button type="submit" class="ml-2 px-6 py-3 bg-blue-900 text-white rounded text-lg">Search</button>
     </form>
-    
+
     {{#if logged_in}}
       <a href="/profile" class="ml-2 text-lg text-white">Your Profile</a>
       <button class="no-button ml-2 text-lg text-white mr-2" id="logout">Logout</button>
@@ -31,6 +33,11 @@
       <a href="/login" class="ml-2 text-lg text-white mr-2">Login</a>
     {{/if}}
   </header>
+
+
+
+
+
 
   <main class="">
     <!-- Render the sub layout -->
@@ -45,6 +52,14 @@
   {{#if logged_in}}
     <script type="text/javascript" src="/js/logout.js"></script>
   {{/if}}
+  <!--This is due to the all the different home routes changing the css route and forcing the MIME error-->
+  <style>
+    
+    header {
+      font-family: 'Libre Baskerville', serif !important;
+    }
+  </style>
+  
 </body>
 
 </html>
