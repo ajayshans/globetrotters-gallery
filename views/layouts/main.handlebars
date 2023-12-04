@@ -16,31 +16,34 @@
 
 <body class="bg-blue-900">
   <header class="page-header flex items-center bg-green-900 text-6xl w-full py-8 text-left">
-    <h1 class="text-white flex-grow flex items-center m-2">Globetrotters Gallery 🌎</h1>
+    
+    <a href="/" class="text-white flex-grow flex items-center m-2">Globetrotters Gallery 🌎</a>
+
     <form class="mx-auto flex items-center" action="/api/search" method="GET">
       <input type="text" name="query" placeholder="Search..." value="" class="px-4 py-3 border rounded text-lg">
       <button type="submit" class="ml-2 px-6 py-3 bg-blue-900 text-white rounded text-lg">Search</button>
     </form>
+    
     {{#if logged_in}}
-    <a href="/profile" class="ml-2 text-lg text-white">Your Profile</a>
-    <button class="no-button ml-2 text-lg text-white mr-2" id="logout">Logout</button>
+      <a href="/profile" class="ml-2 text-lg text-white">Your Profile</a>
+      <button class="no-button ml-2 text-lg text-white mr-2" id="logout">Logout</button>
     {{else}}
-    <a href="/login" class="ml-2 text-lg text-white mr-2">Login</a>
+      <a href="/login" class="ml-2 text-lg text-white mr-2">Login</a>
     {{/if}}
   </header>
 
-    <main class="">
-      <!-- Render the sub layout -->
-      {{{ body }}}
-    </main>
-    <footer>
-      
-    </footer>
-  </div>
+  <main class="">
+    <!-- Render the sub layout -->
+    {{{ body }}}
+  </main>
+
+  <footer>
+    <!-- Footer content goes here -->
+  </footer>
 
   <!-- Render script for logged in users only *NEEDS TO BE UPDATED ONCE HANDLEBARS ARE COMPLETED*-->
   {{#if logged_in}}
-<script type="application/json" src="/js/logout.js"></script>
+    <script type="text/javascript" src="/js/logout.js"></script>
   {{/if}}
 </body>
 

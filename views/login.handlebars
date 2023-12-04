@@ -1,3 +1,42 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Globetrotters Gallery</title>
+    </head>
+<body>
+    <header>
+       
+    </header>
+
+    <main>
+        <section class="login-section">
+            <h1>Login</h1>
+            <form id="login"  method="post">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                {{#if error}}
+                    <p class="error">{{error}}</p>
+                {{/if}}
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="/register">Register</a></p>
+        </section>
+    </main>
+
+    <footer>
+        
+    </footer>
+</body>
+</html>
+-->
 <div class="flex flex-row justify-around mt-20">
   <div class="col-md-6 mr-5 text-white">
     <h2 class = "text-center text-2xl mb-2">Login ⬇️</h2>
@@ -38,3 +77,4 @@
 </div>
 
 <script src="./js/login.js"></script>
+
