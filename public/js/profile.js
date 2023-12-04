@@ -45,7 +45,8 @@ const newFormHandler = async (event) => {
     .querySelector('.new-itinerary-form')
     .addEventListener('submit', newFormHandler);
   
-  document
-    .querySelector('.itinerary-list')
-    .addEventListener('click', delButtonHandler);
+  const list = document.querySelector('.itinerary-list')
+  if (list) {
+    list.addEventListener('click', delButtonHandler);
+  }
   
