@@ -2,6 +2,7 @@
 const { Model, DataTypes } = require ('sequelize');
 const sequelize = require('../config/connection');
 const User = require('./User');
+const Landmark = require('./Landmark');
 
 class Comment extends Model {}
 
@@ -21,22 +22,20 @@ Comment.init(
             key: 'id',
         }
       },
-      location: {
-        type: DataTypes.STRING,
-        allowNull: false,  
+      landmark_id:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: Landmark,
+          key: 'id'
+        }
       },
+      
       review: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    name: {
-        type: DataTypes.STRING,
-        allowNull:false
-    },
-    type: {
-        type: DataTypes.STRING,
-        allowNull:false
-    },
+    
 },
     {
       sequelize,

@@ -1,25 +1,48 @@
-<div class="text-center">
-  <h2>{{itinerary.name}}</h2>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
-
-  <p>
-    <!-- Destination of Itinerary -->
-    <span for="img" aria-label="Compass">&#129517;</span>
-    <span class="destination">{{itinerary.destination}}</span>
-  </p>
-  <p>
-    <!-- Landmark of Itinerary -->
-    <span for="img" aria-label="Magnifying">&#128270;</span>
-    <span class="landmark">{{itinerary.landmark}}</span>
-  </p>
-  <!-- Itinerary Description -->
-  <p>{{itinerary.description}}</p>
-</div>
-
-<!-- Display comments for the selected itinerary -->
-<div id="comments-section">
-  <h3>Comments on this Itinerary</h3>
-  <ul id="comments-list"></ul>
-</div>
-
-<!-- Post comment function -->
+ {{#if landmarkData2}}
+          <ul>
+            <div class="w-3/4 mx-auto">
+                <div class="space-y-4">
+                    {{#each landmarkData2}}
+                        <div class="bg-white rounded-lg p-4 relative">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <p class="font-bold">{{this.location}}</p>
+                                    <p class="text-sm">{{this.name}} - {{this.type}}</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs text-gray-500">{{this.user.username}}</p>
+                                </div>
+                            </div>
+                            <hr class="my-2">
+                            <p class="text-sm">{{this.review}}</p>
+                            <form action="/api/comment" method="GET" id="commentForm">
+                                <button type="submit" class="absolute bottom-2 right-2 p-2 bg-blue-900 text-white rounded-md text-xs">View Comments</button>
+                            </form>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+          </ul>
+        <form action="/api/comment" method="POST" id="commentForm">
+        <div class="bg-white rounded-lg p-4 relative mt-4">
+          <div class="flex items-start justify-between">
+            <div>
+              <textarea name="commentText" class="w-full h-16 border border-gray-300 rounded-md p-2" placeholder="Enter your comment"></textarea>
+            </div>
+            <div class="text-right">
+             
+              <button type="submit" class="p-2 bg-blue-900 text-white rounded-md text-xs">Submit Comment</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    {{#each commentData2}}
+            
+              <div class="bg-gray-200 rounded-lg p-2 mt-2 ml-4">
+                <p class="text-xs text-gray-500">{{this.user.username}}</p>
+                <p class="text-sm">{{this.review}}</p>
+              </div>
+            
+          {{/each}}
+        </div>
+      {{/if}}
