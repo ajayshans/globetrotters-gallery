@@ -1,25 +1,44 @@
-<div class="text-center">
-  <h2>{{itinerary.name}}</h2>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+{{#if landmarkData2}}
+  <ul>
+    <div class="w-3/4 mx-auto mt-8">
+      <div class="space-y-4">
+        {{#each landmarkData2}}
+          <div class="bg-white rounded-lg p-6 relative">
+            <div class="flex items-start justify-between">
+              <div>
+                <p class="font-bold text-lg">{{this.location}}</p>
+                <p class="text-sm">{{this.name}} - {{this.type}}</p>
+              </div>
+              <div class="text-right">
+                <p class="text-xs text-gray-500">{{this.user.username}}</p>
+              </div>
+            </div>
+            <hr class="my-4">
+            <p class="text-sm">{{this.review}}</p>
+           
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </ul>
 
-  <p>
-    <!-- Destination of Itinerary -->
-    <span for="img" aria-label="Compass">&#129517;</span>
-    <span class="destination">{{itinerary.destination}}</span>
-  </p>
-  <p>
-    <!-- Landmark of Itinerary -->
-    <span for="img" aria-label="Magnifying">&#128270;</span>
-    <span class="landmark">{{itinerary.landmark}}</span>
-  </p>
-  <!-- Itinerary Description -->
-  <p>{{itinerary.description}}</p>
-</div>
+  <form action="/api/comment" method="POST" id="commentForm" class="mt-8">
+    <div class="w-2/3 mx-auto">
+      <div class="bg-white rounded-lg p-4 relative flex items-center justify-between">
+        <textarea name="commentText" class="w-2/3 h-16 border border-gray-300 rounded-md p-2" placeholder="Enter your comment" name="query"></textarea>
+        <button type="submit" class="p-2 bg-blue-900 text-white rounded-md text-xs">Post</button>
+      </div>
+    </div>
+  </form>
 
-<!-- Display comments for the selected itinerary -->
-<div id="comments-section">
-  <h3>Comments on this Itinerary</h3>
-  <ul id="comments-list"></ul>
-</div>
 
-<!-- Post comment function -->
+  {{#each commentData2}}
+    <div class="w-2/3 mx-auto bg-gray-200 rounded-lg p-4 mt-4">
+      
+        <p class="text-xs text-gray-500">{{this.user_username}}</p>
+      
+      <p class="text-sm">{{this.review}}</p>
+    </div>
+  {{/each}}
+
+{{/if}}

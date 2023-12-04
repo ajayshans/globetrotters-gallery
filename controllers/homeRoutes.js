@@ -2,6 +2,25 @@ const router = require('express').Router();
 const { Landmark, User } = require('../models');
 const withAuth = require('../utils/auth');
 
+router.get('/', async (req, res) => {
+  try {
+    const landmarkData = await Landmark.findAll({
+    include : [
+        {
+            model: User,
+            as: 'user',
+            attributes:['id','username']
+        }
+    ]
+    });
+    const landmarkData2 = landmarkData.map((landmark) => landmark.get({ plain: true}));
+
+//res.json(landmarkData2)
+res.render('homepage', {landmarkData2 });
+} catch (err) {
+    res.status(400).json(err);
+}
+});
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {

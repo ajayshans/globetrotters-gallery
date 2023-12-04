@@ -26,8 +26,9 @@
                             </div>
                             <hr class="my-2">
                             <p class="text-sm">{{this.review}}</p>
+                            <p class="invisible absolute bottom-2 right-2 text-xs text-gray-500" id="landmarkid">{{this.id}}</p>
                             <form action="/api/comment" method="GET" id="commentForm">
-                                <button type="submit" class="absolute bottom-2 right-2 p-2 bg-blue-900 text-white rounded-md text-xs">View Comments</button>
+                                <button type="submit" id="viewCommentsButton" class="absolute bottom-2 right-2 p-2 bg-blue-900 text-white rounded-md text-xs">View Comments</button>
                             </form>
                         </div>
                     {{/each}}
