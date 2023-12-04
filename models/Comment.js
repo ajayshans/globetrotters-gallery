@@ -14,27 +14,27 @@ Comment.init(
         primaryKey: true,
         autoIncrement: true,
       },
-      user_id: {
-        type: DataTypes.INTEGER,
+      user_username: {
+        type: DataTypes.STRING,
         allowNull: false,
         references: {
-            model: User,
-            key: 'id',
-        }
+          model: User,
+          key: 'username',
+        },
       },
-      landmark_id:{
+      landmark_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: Landmark,
-          key: 'id'
-        }
+          key: 'id',
+        },
       },
-      
       review: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
+      },
+    
     
 },
     {

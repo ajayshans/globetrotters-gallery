@@ -44,29 +44,29 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/api/comment', async (req, res) => {
+    const commentPost = req.query.query
     try {
-      const { commentText } = req.body;
+        const { commentText } = commentPost
+
+        const user = req.user
+
+        const landmarkID = 1 //to be changed when script works
+
+        const newComment = await Comment.create({
+            user_username: user.username,
+            lankmark_id: landmarkID,
+            review: commentText,
+        });
+        
   
-  
-      const userId = req.user.id;
-  
-     
-      const landmarkId = req.body.landmarkId; 
-  
+        const updatedComments = await Comment.findAll({ where: { landmarkId } });
+        res.json({ success: true, comments: updatedComments });
       
-      const newComment = await Comment.create({
-        userId,
-        landmarkId,
-        review: commentText,
-      });
-  
-     
       
-      res.json({ success: true, message: 'Comment submitted successfully!' });
     } catch (error) {
       console.error('Error submitting comment:', error);
       res.status(500).json({ success: false, message: 'Internal server error' });
     }
   });
 
-module.exports = router;
+module.exports = router;``
